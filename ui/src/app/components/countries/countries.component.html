@@ -1,0 +1,6 @@
+<h2>Countries</h2>
+<ol>
+    <li *ngFor="let c of countries" (click)="viewLanguages(c.id)" (keydown)="viewLanguages(c.id)">
+    {{ c.name }} - Area: {{ c.area }} - Code: {{ c.countryCode2 }}
+    </li>
+</ol>

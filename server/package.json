@@ -1,0 +1,9 @@
+{
+  "name": "qualco-casestudy-server",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "build": "mvn clean install -DskipTests",
+    "start": "mvn spring-boot:run -DskipTests"
+  }
+}

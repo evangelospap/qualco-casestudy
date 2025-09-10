@@ -1,0 +1,15 @@
+# Backend (Spring Boot)
+server/target/
+server/*.iml
+server/.idea/
+
+# Frontend (Angular)
+ui/node_modules/
+ui/dist/
+ui/.angular/
+ui/*.log
+
+# OS files
+.DS_Store
+Thumbs.db
+.vscode
