@@ -9,7 +9,6 @@ import { HttpClientModule } from '@angular/common/http';
   selector: 'app-countries',
   standalone: true,
   imports: [CommonModule, HttpClientModule],
-  // providers:[HttpClientModule],
   templateUrl: './countries.component.html',
   styleUrl: './countries.component.scss'
 })
@@ -27,6 +26,6 @@ export class CountriesComponent implements OnInit {
   }
 
   viewLanguages(id: number) {
-    this.router.navigate(['/countries', id, 'languages']);
+    this.router.navigate(['/countries', id, 'languages'], { queryParams: { name: this.countries.find(c => c.id === id)?.name } });
   }
 }
