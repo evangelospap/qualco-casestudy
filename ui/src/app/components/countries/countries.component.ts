@@ -3,11 +3,13 @@ import { CountryDto } from '../../dtos/country';
 import { CountryService } from '../../services/country.service';
 import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
+import { HttpClientModule } from '@angular/common/http';
 
 @Component({
   selector: 'app-countries',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, HttpClientModule],
+  // providers:[HttpClientModule],
   templateUrl: './countries.component.html',
   styleUrl: './countries.component.scss'
 })

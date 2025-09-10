@@ -14,8 +14,9 @@ spring:
   profiles:
     active: dev              # can be 'dev', 'test', 'prod'
 server:
-  port: 8080                 # default Tomcat port, change if needed
-
+  port: 8082
+  servlet:
+    context-path: /api
 # Logging configuration (optional)
 logging:
   level:
