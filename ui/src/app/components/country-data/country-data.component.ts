@@ -1,4 +1,4 @@
-import { DecimalPipe } from '@angular/common';
+import { CommonModule, DecimalPipe } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { RegionDto } from '../../dtos/region';
 import { CountryDataDto } from '../../dtos/country-data';
@@ -7,7 +7,7 @@ import { CountryDataService } from '../../services/country-data.service';
 @Component({
   selector: 'app-country-data',
   standalone: true,
-  imports: [DecimalPipe],
+  imports: [DecimalPipe, CommonModule],
   templateUrl: './country-data.component.html',
   styleUrl: './country-data.component.scss'
 })

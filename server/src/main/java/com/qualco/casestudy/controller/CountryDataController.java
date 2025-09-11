@@ -3,12 +3,11 @@ package com.qualco.casestudy.controller;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.qualco.casestudy.dto.CountryDataDto;
-import com.qualco.casestudy.model.Region;
-import com.qualco.casestudy.repository.RegionRepository;
+import com.qualco.casestudy.model.CountryStat;
 import com.qualco.casestudy.service.CountryDataService;
 
-import java.util.List;
-
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -23,12 +22,22 @@ public class CountryDataController {
 
 
     @GetMapping()
-    public List<CountryDataDto> getCountryData(
-            @RequestParam(required = false) Integer regionId,
+    public Page<CountryDataDto> getCountryData(
+            @RequestParam(required = false) Long regionId,
             @RequestParam(required = false) Integer yearFrom,
-            @RequestParam(required = false) Integer yearTo
-    ) {
-        return service.getCountryData(regionId, yearFrom, yearTo);
+            @RequestParam(required = false) Integer yearTo,
+            @RequestParam(defaultValue = "0") int page,
+            @RequestParam(defaultValue = "20") int size ) {
+        Page<CountryStat> statsPage = service.getCountryData(regionId, yearFrom, yearTo, PageRequest.of(page, size));
+
+        return statsPage.map(stat -> new CountryDataDto(
+                stat.getCountry().getRegion().getContinent().getName(),
+                stat.getCountry().getRegion().getName(),
+                stat.getCountry().getName(),
+                stat.getYear(),
+                stat.getPopulation(),
+                stat.getGdp()
+        ));
     }
 
 }

@@ -1,23 +1,25 @@
 package com.qualco.casestudy.service;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
-import com.qualco.casestudy.dto.CountryDataDto;
+import com.qualco.casestudy.model.CountryStat;
 import com.qualco.casestudy.repository.CountryStatRepository;
+import com.qualco.casestudy.specifications.CountryStatFilter;
 
 import lombok.RequiredArgsConstructor;
 
-import java.util.List;
 
 @Service
 @RequiredArgsConstructor
 public class CountryDataService {
     private final CountryStatRepository countryStatRepository;
 
-
-    public List<CountryDataDto> getCountryData(Integer regionId, Integer yearFrom, Integer yearTo) {
-        // Fetch all stats, filter by region and year
-        throw new UnsupportedOperationException("Unimplemented method 'getCountryData'");
-
+    public Page<CountryStat> getCountryData(Long regionId, Integer yearFrom, Integer yearTo, Pageable pageable) {
+        return countryStatRepository.findAll(
+                CountryStatFilter.byRegionAndYear(regionId, yearFrom, yearTo),
+                pageable
+        );
     }
 }

@@ -6,6 +6,6 @@ public record CountryDataDto(
     String region,
     String country,
     Integer year,
-    Long population,
-    Long gdp
+    Integer population,
+    Double gdp
 ) {}

@@ -3,13 +3,15 @@ package com.qualco.casestudy.repository;
 import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 import org.springframework.data.jpa.repository.Query;
 
 import com.qualco.casestudy.dto.CountryTopStatProjection;
 import com.qualco.casestudy.model.CountryStat;
 import com.qualco.casestudy.model.CountryStatId;
 
-public interface CountryStatRepository extends JpaRepository<CountryStat, CountryStatId> { 
+public interface CountryStatRepository extends JpaRepository<CountryStat, CountryStatId>,
+        JpaSpecificationExecutor<CountryStat> { 
     @Query(value = """
             SELECT c.country_id AS countryId,
                    c.name AS countryName,
