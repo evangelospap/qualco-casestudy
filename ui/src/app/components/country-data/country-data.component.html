@@ -1,0 +1,46 @@
+<h2>Country Data</h2>
+
+<!-- Filters -->
+<div class="filters">
+    <label>Region:
+    <!-- <select 
+    [(ngModel)]="selectedRegion">
+        <option value="">All</option>
+        <option *ngFor="let region of regions" [value]="region.id">{{ region.name }}</option>
+    </select> -->
+    </label>
+
+    <label>Year From:
+    <!-- <input type="number" [(ngModel)]="yearFrom" placeholder="From"/> -->
+    </label>
+
+    <label>Year To:
+    <!-- <input type="number" [(ngModel)]="yearTo" placeholder="To"/> -->
+    </label>
+
+    <button (click)="applyFilters()">Apply Filters</button>
+</div>
+
+<!-- Table -->
+<table>
+    <thead>
+    <tr>
+        <th>Continent</th>
+        <th>Region</th>
+        <th>Country</th>
+        <th>Year</th>
+        <th>Population</th>
+        <th>GDP</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let row of countryData">
+        <td>{{ row.continent }}</td>
+        <td>{{ row.region }}</td>
+        <td>{{ row.country }}</td>
+        <td>{{ row.year }}</td>
+        <td>{{ row.population | number }}</td>
+        <td>{{ row.gdp | number }}</td>
+    </tr>
+    </tbody>
+</table>
