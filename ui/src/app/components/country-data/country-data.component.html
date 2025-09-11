@@ -3,44 +3,60 @@
 <!-- Filters -->
 <div class="filters">
     <label>Region:
-    <!-- <select 
+    <select 
     [(ngModel)]="selectedRegion">
         <option value="">All</option>
         <option *ngFor="let region of regions" [value]="region.id">{{ region.name }}</option>
-    </select> -->
+    </select>
     </label>
 
     <label>Year From:
-    <!-- <input type="number" [(ngModel)]="yearFrom" placeholder="From"/> -->
+    <input type="number" [(ngModel)]="yearFrom" placeholder="From"/>
     </label>
 
     <label>Year To:
-    <!-- <input type="number" [(ngModel)]="yearTo" placeholder="To"/> -->
+    <input type="number" [(ngModel)]="yearTo" placeholder="To"/>
     </label>
 
     <button (click)="applyFilters()">Apply Filters</button>
 </div>
+<div>
+    <!-- Pagination controls -->
+    <div style="margin-bottom: 10px;">
+        <button style="margin-right: 10px;" (click)="prevPage()" [disabled]="page === 0">Previous</button>
+        <span>Page {{ page + 1 }} of {{ totalPages }}</span>
+        <button style="margin-left: 10px;" (click)="nextPage()" [disabled]="page === totalPages - 1">Next</button>
 
-<!-- Table -->
-<table>
-    <thead>
-    <tr>
-        <th>Continent</th>
-        <th>Region</th>
-        <th>Country</th>
-        <th>Year</th>
-        <th>Population</th>
-        <th>GDP</th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr *ngFor="let row of countryData">
-        <td>{{ row.continent }}</td>
-        <td>{{ row.region }}</td>
-        <td>{{ row.country }}</td>
-        <td>{{ row.year }}</td>
-        <td>{{ row.population | number }}</td>
-        <td>{{ row.gdp | number }}</td>
-    </tr>
-    </tbody>
-</table>
+        <!-- Page size dropdown -->
+        <label style="margin-left: 20px;">
+        Rows per page:
+        <select (change)="changePageSize($event)" [value]="size">
+            <option *ngFor="let option of [10,20,50,100]" [value]="option">{{ option }}</option>
+        </select>
+        </label>
+    </div>
+    <!-- Table -->
+    <table>
+        <thead>
+        <tr>
+            <th>Country</th>
+            <th>Continent</th>
+            <th>Region</th>
+            <th>Year</th>
+            <th>Population</th>
+            <th>GDP</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let row of countryData">
+            <td>{{ row.country }}</td>
+            <td>{{ row.continent }}</td>
+            <td>{{ row.region }}</td>
+            <td>{{ row.year }}</td>
+            <td>{{ row.population | number }}</td>
+            <td>{{ row.gdp | number }}</td>
+        </tr>
+        </tbody>
+    </table>
+   
+</div>

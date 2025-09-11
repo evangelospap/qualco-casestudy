@@ -2,7 +2,6 @@ package com.qualco.casestudy.specifications;
 
 import org.springframework.data.jpa.domain.Specification;
 
-import com.qualco.casestudy.model.Continent;
 import com.qualco.casestudy.model.Country;
 import com.qualco.casestudy.model.CountryStat;
 import com.qualco.casestudy.model.Region;
@@ -20,7 +19,6 @@ public class CountryStatFilter {
 
             Join<CountryStat, Country> countryJoin = root.join("country");
             Join<Country, Region> regionJoin = countryJoin.join("region");
-            Join<Region, Continent> continentJoin = regionJoin.join("continent");
 
             Predicate predicate = criteriaBuilder.conjunction(); // always true
 

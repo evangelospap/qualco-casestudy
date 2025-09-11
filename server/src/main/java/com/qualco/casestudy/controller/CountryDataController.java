@@ -3,11 +3,12 @@ package com.qualco.casestudy.controller;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.qualco.casestudy.dto.CountryDataDto;
-import com.qualco.casestudy.model.CountryStat;
 import com.qualco.casestudy.service.CountryDataService;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -20,20 +21,21 @@ import lombok.RequiredArgsConstructor;
 public class CountryDataController {
 	private final CountryDataService service;
 
-
-    @GetMapping()
+    @GetMapping
     public Page<CountryDataDto> getCountryData(
-            @RequestParam(required = false) Long regionId,
-            @RequestParam(required = false) Integer yearFrom,
-            @RequestParam(required = false) Integer yearTo,
-            @RequestParam(defaultValue = "0") int page,
-            @RequestParam(defaultValue = "20") int size ) {
-        Page<CountryStat> statsPage = service.getCountryData(regionId, yearFrom, yearTo, PageRequest.of(page, size));
+        @RequestParam(required = false) Integer regionId,
+        @RequestParam(required = false) Integer yearFrom,
+        @RequestParam(required = false) Integer yearTo,
+        @RequestParam(defaultValue = "0") int page,
+        @RequestParam(defaultValue = "1000") int size
+    ) {
 
-        return statsPage.map(stat -> new CountryDataDto(
-                stat.getCountry().getRegion().getContinent().getName(),
-                stat.getCountry().getRegion().getName(),
-                stat.getCountry().getName(),
+    Pageable pageable = PageRequest.of(page, size, Sort.by(Sort.Direction.DESC, "year"));
+    return service.getCountryData(regionId, yearFrom, yearTo, pageable)
+        .map(stat -> new CountryDataDto(
+                stat.getContinent(),
+                stat.getRegion(),
+                stat.getCountry(),
                 stat.getYear(),
                 stat.getPopulation(),
                 stat.getGdp()
