@@ -12,7 +12,7 @@ public class CountryLanguage {
     @EmbeddedId
     private CountryLanguageId id;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @MapsId("countryId") // links countryId in CountryLanguageId to Country
     @JoinColumn(name = "country_id")
     private Country country;

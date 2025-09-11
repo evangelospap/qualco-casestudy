@@ -9,5 +9,5 @@ import com.qualco.casestudy.model.CountryLanguageId;
 
 
 public interface CountryLanguageRepository extends JpaRepository<CountryLanguage, CountryLanguageId> {
-    List<CountryLanguage> findByCountry_Id(Long countryId);
+    List<CountryLanguage> findByCountry_Id(Integer countryId);
 }

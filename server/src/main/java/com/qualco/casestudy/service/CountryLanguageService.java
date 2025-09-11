@@ -15,7 +15,7 @@ public class CountryLanguageService {
 
     private final CountryLanguageRepository countryLanguageRepository;
 
-    public List<LanguageDto> getLanguagesForCountry(Long countryId) {
+    public List<LanguageDto> getLanguagesForCountry(Integer countryId) {
         return countryLanguageRepository.findByCountry_Id(countryId).stream()
                 .map(cl -> new LanguageDto(cl.getLanguage().getLanguage(), cl.getOfficial()))
                 .toList();

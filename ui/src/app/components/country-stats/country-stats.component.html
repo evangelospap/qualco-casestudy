@@ -1,0 +1,21 @@
+<h2>Country Statistics (Max GDP/Population)</h2>
+<table>
+    <thead>
+    <tr>
+        <th>Name</th>
+        <th>Country Code</th>
+        <th>Year</th>
+        <th>Population</th>
+        <th>GDP</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let stat of stats">
+        <td>{{ stat.name }}</td>
+        <td>{{ stat.countryCode3 }}</td>
+        <td>{{ stat.year }}</td>
+        <td>{{ stat.population | number }}</td>
+        <td>{{ stat.gdp | number }}</td>
+    </tr>
+    </tbody>
+</table>
