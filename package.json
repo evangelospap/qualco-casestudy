@@ -1,0 +1,9 @@
+{
+  "name": "qualco-casestudy",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "ui": "cd ui && npm start",
+    "server": "cd server && npm start"
+  }
+}
