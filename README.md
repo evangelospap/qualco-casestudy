@@ -46,7 +46,7 @@ The backend runs by default at: http://localhost:8082/api
 ## Database Configuration
 
 Create an application.yml file in server/src/main/resources/ with the following template:
-
+```yaml
 spring:
   datasource:
     url: jdbc:mariadb://localhost:3306/nation
@@ -72,7 +72,7 @@ logging:
   level:
     org.hibernate.SQL: DEBUG
     org.hibernate.type.descriptor.sql.BasicBinder: TRACE
-
+```
 
 Note: Replace YOUR_DB_USERNAME and YOUR_DB_PASSWORD with your actual credentials. Do not commit this file to GitHub.
 
