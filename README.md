@@ -1,4 +1,4 @@
-# Qualco Case Study Project
+# Case Study Project
 
 An Angular + Spring Boot application that displays country data and statistics, with filtering and pagination functionality.
 ---
