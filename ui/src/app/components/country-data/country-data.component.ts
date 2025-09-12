@@ -15,7 +15,7 @@ import { FormsModule } from '@angular/forms';
 export class CountryDataComponent implements OnInit {
   data: any[] = [];
   page = 0;          // current page index
-  size = 20;         // rows per page
+  size = 10;         // rows per page
   totalPages = 0;    // total number of pages
   totalElements = 0; // total rows
   regions: RegionDto[] = [];
