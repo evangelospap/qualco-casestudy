@@ -8,18 +8,18 @@ Make sure the following are installed:
 
 - **Java JDK 17**  
 
-java -version
+    java -version
 
 
 - **Node.js & npm**  
 
-node -v   # v22.19.0
-npm -v    # 11.6.0
+    node -v   # v22.19.0
+    npm -v    # 11.6.0
 
 
 - **Angular CLI (for running the frontend)**  
 
-npm install -g @angular/cli
+    npm install -g @angular/cli
 
 
 - **Database (MariaDB, as configured in application.yml)**  
@@ -28,17 +28,17 @@ npm install -g @angular/cli
 
 1. Navigate to the backend folder (or project root):
 
-cd backend
+    cd backend
 
 
 2. Build the project:
 
-mvn clean install -DskipTests
+    mvn clean install -DskipTests
 
 
 3. Run the Spring Boot application:
 
-mvn spring-boot:run -DskipTests
+    mvn spring-boot:run -DskipTests
 
 
 The backend runs by default at: http://localhost:8082/api
@@ -80,17 +80,17 @@ Note: Replace YOUR_DB_USERNAME and YOUR_DB_PASSWORD with your actual credentials
 
 1. Navigate to the frontend folder (or project root if combined):
 
-cd ui
+    cd ui
 
 
 2. Install dependencies:
 
-npm install
+    npm install
 
 
 3. Start the Angular development server:
 
-ng serve
+    ng serve
 
 
 Access the frontend at: http://localhost:4200
