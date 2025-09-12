@@ -12,18 +12,13 @@ export class CountryDataService {
   constructor(private readonly http: HttpClient) {}
 
   getCountryDataPaginated(page: number, size: number,regionId?: number, yearFrom?: number, yearTo?: number){
-    // let query = '?';
-    // if (regionId) query += `regionId=${regionId}&`;
-    // if (yearFrom) query += `yearFrom=${yearFrom}&`;
-    // if (yearTo) query += `yearTo=${yearTo}&`;
-    // return this.http.get(this.apiUrl + query);
 
     let params: any = { page, size };
     if (regionId) params.regionId = regionId;
     if (yearFrom) params.yearFrom = yearFrom;
     if (yearTo) params.yearTo = yearTo;
 
-  return this.http.get<any>('/api/country-data', { params });
+  return this.http.get<any>(this.apiUrl, { params });
 }
 
   getRegions(): Observable<RegionDto[]> {

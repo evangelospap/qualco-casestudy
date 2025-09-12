@@ -9,6 +9,15 @@ import { LanguageDto } from '../dtos/language';
 })
 export class CountryService {
   private readonly apiUrl = '/api/countries';
+  private readonly countryMap = new Map<number, CountryDto>();
+
+  setCountry(country: CountryDto) {
+    this.countryMap.set(country.id, country);
+  }
+
+  getCountry(id: number): CountryDto | undefined {
+    return this.countryMap.get(id);
+  }
 
   constructor(private readonly http: HttpClient) { }
 

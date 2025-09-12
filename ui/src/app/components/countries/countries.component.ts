@@ -15,10 +15,10 @@ import { HttpClientModule } from '@angular/common/http';
 export class CountriesComponent implements OnInit {
   countries: CountryDto[] = [];
 
-  constructor(private readonly service: CountryService, private readonly router: Router) {}
+  constructor(private readonly countryService: CountryService, private readonly router: Router) {}
 
   ngOnInit() {
-    this.service.getCountries().subscribe(
+    this.countryService.getCountries().subscribe(
       data => {
         this.countries = data
       }
@@ -26,6 +26,10 @@ export class CountriesComponent implements OnInit {
   }
 
   viewLanguages(id: number) {
-    this.router.navigate(['/countries', id, 'languages'], { queryParams: { name: this.countries.find(c => c.id === id)?.name } });
+    const country = this.countries.find(c => c.id === id);
+    if (country) {
+      this.countryService.setCountry(country);
+      this.router.navigate(['/countries', id, 'languages']);
+    }
   }
 }
