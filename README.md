@@ -6,12 +6,12 @@ An Angular + Spring Boot application that displays country data and statistics, 
 
 Make sure the following are installed:
 
-- **Java JDK 17 **  
+- **Java JDK 17**  
 
 java -version
 
 
-- **Node.js & npm **  
+- **Node.js & npm**  
 
 node -v   # v22.19.0
 npm -v    # 11.6.0
@@ -22,7 +22,7 @@ npm -v    # 11.6.0
 npm install -g @angular/cli
 
 
-- **Database (MariaDB, as configured in application.yml) **  
+- **Database (MariaDB, as configured in application.yml)**  
 
 ## Backend Setup (Spring Boot)
 
