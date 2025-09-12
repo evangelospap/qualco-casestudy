@@ -1,71 +1,84 @@
 # Qualco Case Study Project
 
-This project is an Angular + Spring Boot application that displays country data, statistics, and allows filtering and pagination.  
-
+An Angular + Spring Boot application that displays country data and statistics, with filtering and pagination functionality.
 ---
-
 ## Prerequisites
 
-Make sure you have the following installed:
+Make sure the following are installed:
 
 - **Java JDK 17 +  node.js**  
-  Check version with:
-  
-  java -version
 
-I used:
+java -version
+
+
+Node.js & npm
+
 node -v   # v22.19.0
 npm -v    # 11.6.0
 
+
+Angular CLI (for running the frontend)
+
+npm install -g @angular/cli
+
+
+Database (MariaDB, as configured in application.yml)
+
 Backend Setup (Spring Boot)
 
-Navigate to the backend folder (if separate) or project root:
+Navigate to the backend folder (or project root):
 
 cd backend
 
-Build and run the Spring Boot application:
-a) build with :
+
+Build the project:
+
 mvn clean install -DskipTests
-b) mvn spring-boot:run -DskipTests
 
-or you can use package.json script like :
-npm run build
-or 
-npm run start
 
-The backend will run by default on http://localhost:8082 if you copy the following .yml
+Run the Spring Boot application:
 
-Ensure your database is running and accessible as configured in application.properties or application.yml .
-You should create the .yml/.properties file here: server\src\main\resources\application.yml
+mvn spring-boot:run -DskipTests
 
-Must look like :
+
+The backend runs by default at: http://localhost:8082/api
+
+Database Configuration
+
+Create an application.yml file in server/src/main/resources/ with the following template:
+
 spring:
   datasource:
     url: jdbc:mariadb://localhost:3306/nation
-    username: {username-and-remove-brackets}  
-    password: {password-and-remove-brackets}  
+    username: YOUR_DB_USERNAME
+    password: YOUR_DB_PASSWORD
     driver-class-name: org.mariadb.jdbc.Driver
   jpa:
     hibernate:
-      ddl-auto: update      # options: validate | update | create | create-drop
-    show-sql: true           # shows SQL in console
+      ddl-auto: update   # options: validate | update | create | create-drop
+    show-sql: true
     properties:
       hibernate:
         dialect: org.hibernate.dialect.MariaDBDialect
   profiles:
-    active: dev              # can be 'dev', 'test', 'prod'
+    active: dev
+
 server:
   port: 8082
   servlet:
     context-path: /api
+
 logging:
   level:
     org.hibernate.SQL: DEBUG
     org.hibernate.type.descriptor.sql.BasicBinder: TRACE
 
+
+Note: Replace YOUR_DB_USERNAME and YOUR_DB_PASSWORD with your actual credentials. Do not commit this file to GitHub.
+
 Frontend Setup (Angular)
 
-Navigate to the Angular frontend folder (or project root if combined):
+Navigate to the frontend folder (or project root if combined):
 
 cd ui
 
@@ -75,30 +88,27 @@ Install dependencies:
 npm install
 
 
-Run the Angular development server:
+Start the Angular development server:
 
 ng serve
 
 
-Access the frontend at http://localhost:4200
+Access the frontend at: http://localhost:4200
 
 Usage
 
-The home page shows navigation links to different tasks (countries, stats, etc.)
+The home page provides navigation links to different tasks (e.g., countries, statistics).
 
-Use the filters and pagination controls in the /country-data page to query data dynamically.
+The /country-data page supports filtering by region and year range, along with pagination controls.
 
-The menu and pages are implemented in Angular with a Spring Boot REST backend.
+Data is fetched dynamically from the Spring Boot REST backend.
 
 Notes
 
-Angular CLI is required for running the frontend:
+Ensure your database is populated according to the SQL scripts included in the project.
 
-npm install -g @angular/cli
-
-
-Database schema is expected to be pre-populated as per the SQL provided in the project.
+The project uses plain HTML + CSS for the UI without Angular Material.
 
 License
 
-This project is for demonstration purposes and does not include a specific license.
+This project is for demonstration purposes only. No license is included.
