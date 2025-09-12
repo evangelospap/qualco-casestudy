@@ -22,8 +22,19 @@ Make sure the following are installed:
     npm install -g @angular/cli
 
 
-- **Database (MariaDB, as configured in application.yml)**  
+- **Database (MariaDB, as configured in application.yml)**
+  
+## Database Setup
 
+Before running the application, you need to create the database and populate it with the required tables and data.
+
+1. Make sure MariaDB is installed and running.
+2. Open your MariaDB client (e.g., `mysql` CLI, HeidiSQL, DBeaver, etc.).
+3. Run the provided SQL dump to create the database and populate tables:
+
+```bash
+mysql -u YOUR_DB_USERNAME -p < server/src/main/resources/DB_dump_nation.sql
+```
 ## Backend Setup (Spring Boot)
 
 1. Navigate to the backend folder (or project root):
