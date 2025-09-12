@@ -58,8 +58,47 @@ server:
   port: 8082
   servlet:
     context-path: /api
-# Logging configuration (optional)
 logging:
   level:
     org.hibernate.SQL: DEBUG
     org.hibernate.type.descriptor.sql.BasicBinder: TRACE
+
+Frontend Setup (Angular)
+
+Navigate to the Angular frontend folder (or project root if combined):
+
+cd ui
+
+
+Install dependencies:
+
+npm install
+
+
+Run the Angular development server:
+
+ng serve
+
+
+Access the frontend at http://localhost:4200
+
+Usage
+
+The home page shows navigation links to different tasks (countries, stats, etc.)
+
+Use the filters and pagination controls in the /country-data page to query data dynamically.
+
+The menu and pages are implemented in Angular with a Spring Boot REST backend.
+
+Notes
+
+Angular CLI is required for running the frontend:
+
+npm install -g @angular/cli
+
+
+Database schema is expected to be pre-populated as per the SQL provided in the project.
+
+License
+
+This project is for demonstration purposes and does not include a specific license.
