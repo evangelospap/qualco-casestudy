@@ -13,8 +13,9 @@ import com.qualco.casestudy.dto.CountryTopStatProjection;
 import com.qualco.casestudy.model.CountryStat;
 import com.qualco.casestudy.model.CountryStatId;
 
-public interface CountryStatRepository extends JpaRepository<CountryStat, CountryStatId>,
-        JpaSpecificationExecutor<CountryStat> { 
+public interface CountryStatRepository extends JpaRepository<CountryStat, CountryStatId>
+    // , JpaSpecificationExecutor<CountryStat> 
+    { 
     @Query(value = """
             SELECT c.country_id AS countryId,
                    c.name AS countryName,
